@@ -11,7 +11,6 @@ const publicDirectoryPath = path.join(__dirname, './../public');
 app.use(express.static(publicDirectoryPath));
 app.set('view engine', 'ejs');
 
-
 // Main Page
 app.get('/', (req, res) => {
     res.render('index');
