@@ -9,6 +9,12 @@ require('./db/mongoose');
 const publicDirectoryPath = path.join(__dirname, './../public');
 
 app.use(express.static(publicDirectoryPath));
+app.use(express.json());
+
+// use router
+app.use('/api', require('./routers/rumahSakit'));
+app.use('/api/post', require('./routers/rumahSakitPost'));
+
 app.set('view engine', 'ejs');
 
 // Main Page
