@@ -25,7 +25,7 @@ const RumahSakitSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    images : [Buffer]
+    images : [String]
 });
 
 const RumahSakitModel = mongoose.model('RumahSakit', RumahSakitSchema);
