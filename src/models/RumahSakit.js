@@ -1,5 +1,14 @@
 const mongoose = require('mongoose');
 
+const imageSchema = mongoose.Schema({
+    location : {
+        type : String
+    },
+    key : {
+        type : String
+    }
+});
+
 const RumahSakitSchema = mongoose.Schema({
     name : {
         type: String,
@@ -25,7 +34,7 @@ const RumahSakitSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    images : [String]
+    images : [imageSchema]
 });
 
 const RumahSakitModel = mongoose.model('RumahSakit', RumahSakitSchema);
