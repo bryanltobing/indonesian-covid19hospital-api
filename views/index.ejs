@@ -24,7 +24,7 @@
               <p class="card-text disabled"><a href="/api/rumahsakit">/api/rumahsakit</a></p>
               <h5 class="card-title">Full End Point</h5>
                 <p class="card-text disabled">
-                  <a class="fullendpoint" href="<%=host%>/api/rumahsakit"><%=host%>/api/rumahsakit</a>
+                  <a class="fullendpoint" href="/api/rumahsakit"><%=host%>/api/rumahsakit</a>
                   <span onclick="copyToClipBoard()" class="copyIcon" data-toggle="tooltip" data-placement="top" title="Copy to Clipboard"><i class="ml-3 fas fa-copy text-info copy-clipboard fa-lg cp-icon"></i></span>
                   <input type="text" value="" class="myInput" style="opacity: 0; cursor: default;">
                 </p>
@@ -37,7 +37,7 @@
               <p class="card-text disabled"><a href="/api/rumahsakit/search?province=sumatera">/api/rumahsakit/search?province=sumatera</a></p>
               <h5 class="card-title">Full End Point</h5>
                 <p class="card-text disabled">
-                  <a class="fullendpoint2" href="<%=host%>/api/rumahsakit/search?province=[province_name]"><%=host%>/api/rumahsakit/search?province=[province_name]</a>
+                  <a class="fullendpoint2" href="/api/rumahsakit/search?province=[province_name]"><%=host%>/api/rumahsakit/search?province=[province_name]</a>
                   <span onclick="copyToClipBoard2()" class="copyIcon2" data-toggle="tooltip" data-placement="top" title="Copy to Clipboard"><i class="ml-3 fas fa-copy text-info copy-clipboard fa-lg cp-icon2"></i></span>
                   <input type="text" value="" class="myInput2" style="opacity: 0; cursor: default;">
                 </p>
@@ -54,42 +54,7 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         });
-
-        // Males ngelooping statis aja dulu
-        function copyToClipBoard() {
-            const anchorValue = document.querySelector('.fullendpoint');
-            const myInput = document.querySelector('.myInput');
-            const copyIcon = document.querySelector('.copyIcon');
-            const cpIcon = document.querySelector('.cp-icon'); 
-            copyIcon.setAttribute('data-original-title', 'Copied');
-            cpIcon.setAttribute('style', 'color:lightskyblue !important;')
-            myInput.value = anchorValue;
-            
-            myInput.select();   
-            myInput.setSelectionRange(0, 99999);
-
-            document.execCommand("copy");
-
-            // alert("Copied the text: " + myInput.value);
-        }
-
-        function copyToClipBoard2() {
-            const anchorValue = document.querySelector('.fullendpoint2');
-            const myInput = document.querySelector('.myInput2');
-            const copyIcon = document.querySelector('.copyIcon2');
-            const cpIcon = document.querySelector('.cp-icon2'); 
-            copyIcon.setAttribute('data-original-title', 'Copied');
-            cpIcon.setAttribute('style', 'color:lightskyblue !important;')
-            myInput.value = anchorValue;
-            
-            myInput.select();   
-            myInput.setSelectionRange(0, 99999);
-
-            document.execCommand("copy");
-
-            // alert("Copied the text: " + myInput.value);
-        }
-        
     </script>
+    <script src="/js/copy-function.js"></script>
 </body>
 </html>

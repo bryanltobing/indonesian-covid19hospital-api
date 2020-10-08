@@ -28,10 +28,20 @@ router.get('/rumahsakit/search', async (req, res) => {
         }
         const regex = new RegExp(escapeRegex(query), 'gi');
         const rumahSakit = await RumahSakitModel.find({ province : regex });
+        if(rumahSakit.length < 1) {
+            throw new Error('No result found');
+        }
         res.json(rumahSakit);
     } catch(e) {
+        let redirect;
+        if(req.headers.host === 'localhost:9000') {
+            redirect = 'http://localhost:9000';
+        } else {
+            redirect = 'https://covidapp-id.herokuapp.com'
+        }
         res.status(404).json({
-            error : e.message   
+            error : e.message,
+            redirect : redirect  
         });
     }
 });
