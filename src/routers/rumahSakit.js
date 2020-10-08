@@ -22,12 +22,19 @@ router.get('/rumahsakit', (req, res) => {
 // search by province
 router.get('/rumahsakit/search', async (req, res) => {
     const query = req.query.province;
+    const limit = parseInt(req.query.limit);
     try {
+        let rumahSakit;
+        const regex = new RegExp(escapeRegex(query), 'gi');
         if(!query) {
             throw new Error('provide your search query');
         }
-        const regex = new RegExp(escapeRegex(query), 'gi');
-        const rumahSakit = await RumahSakitModel.find({ province : regex });
+        if(!limit) {
+            rumahSakit = await RumahSakitModel.find({ province : regex }).limit(20);
+        } else {
+            rumahSakit = await RumahSakitModel.find({ province : regex }).limit(limit);
+        }
+        
         if(rumahSakit.length < 1) {
             throw new Error('No result found');
         }
@@ -35,7 +42,7 @@ router.get('/rumahsakit/search', async (req, res) => {
     } catch(e) {
         let redirect;
         if(req.headers.host === 'localhost:9000') {
-            redirect = 'http://localhost:9000';
+            redirect = 'http://loca lhost:9000';
         } else {
             redirect = 'https://covidapp-id.herokuapp.com'
         }
