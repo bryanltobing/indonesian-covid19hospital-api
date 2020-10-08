@@ -5,13 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Api Indonesian Covid19 Hospital</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        .copy-clipboard {
+            cursor: pointer;
+        }
+        .copy-clipboard:hover {
+            color: lightskyblue !important;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Indonesian Covid19 Hospital API</h1>
-        <a href="/api/rumahsakit">api/rumahsakit</a>
-        <!-- <input type="file" name="filefield" multiple="multiple"> -->
-        <div class="file"></div>
+        <h2 class="my-4">Indonesian Covid19 Hospital API</h2>
+        <div class="card mb-4">
+            <h5 class="card-header">List Rumah Sakit</h5>
+            <div class="card-body">
+              <h5 class="card-title">End Point</h5>
+              <p class="card-text disabled"><a href="/api/rumahsakit">/api/rumahsakit</a></p>
+              <h5 class="card-title">Full End Point</h5>
+                <p class="card-text disabled">
+                  <a class="fullendpoint" href="<%=host%>/api/rumahsakit"><%=host%>/api/rumahsakit</a>
+                  <span onclick="copyToClipBoard()" class="copyIcon" data-toggle="tooltip" data-placement="top" title="Copy to Clipboard"><i class="ml-3 fas fa-copy text-info copy-clipboard fa-lg cp-icon"></i></span>
+                  <input type="text" value="" class="myInput" style="opacity: 0; cursor: default;">
+                </p>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <h5 class="card-header">Search Rumah Sakit by Province</h5>
+            <div class="card-body">
+              <h5 class="card-title">End Point</h5>
+              <p class="card-text disabled"><a href="/api/rumahsakit/search?province=sumatera">/api/rumahsakit/search?province=sumatera</a></p>
+              <h5 class="card-title">Full End Point</h5>
+                <p class="card-text disabled">
+                  <a class="fullendpoint2" href="<%=host%>/api/rumahsakit/search?province=[province_name]"><%=host%>/api/rumahsakit/search?province=[province_name]</a>
+                  <span onclick="copyToClipBoard2()" class="copyIcon2" data-toggle="tooltip" data-placement="top" title="Copy to Clipboard"><i class="ml-3 fas fa-copy text-info copy-clipboard fa-lg cp-icon2"></i></span>
+                  <input type="text" value="" class="myInput2" style="opacity: 0; cursor: default;">
+                </p>
+            </div>
+        </div>
     </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+
+        // Males ngelooping statis aja dulu
+        function copyToClipBoard() {
+            const anchorValue = document.querySelector('.fullendpoint');
+            const myInput = document.querySelector('.myInput');
+            const copyIcon = document.querySelector('.copyIcon');
+            const cpIcon = document.querySelector('.cp-icon'); 
+            copyIcon.setAttribute('data-original-title', 'Copied');
+            cpIcon.setAttribute('style', 'color:lightskyblue !important;')
+            myInput.value = anchorValue;
+            
+            myInput.select();   
+            myInput.setSelectionRange(0, 99999);
+
+            document.execCommand("copy");
+
+            // alert("Copied the text: " + myInput.value);
+        }
+
+        function copyToClipBoard2() {
+            const anchorValue = document.querySelector('.fullendpoint2');
+            const myInput = document.querySelector('.myInput2');
+            const copyIcon = document.querySelector('.copyIcon2');
+            const cpIcon = document.querySelector('.cp-icon2'); 
+            copyIcon.setAttribute('data-original-title', 'Copied');
+            cpIcon.setAttribute('style', 'color:lightskyblue !important;')
+            myInput.value = anchorValue;
+            
+            myInput.select();   
+            myInput.setSelectionRange(0, 99999);
+
+            document.execCommand("copy");
+
+            // alert("Copied the text: " + myInput.value);
+        }
+        
+    </script>
 </body>
 </html>

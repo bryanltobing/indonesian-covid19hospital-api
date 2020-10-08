@@ -18,7 +18,9 @@ app.set('view engine', 'ejs');
 
 // Main Page
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', {
+        host : req.headers.host
+    });
 });
 
 app.listen(port, function() {
